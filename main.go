@@ -103,13 +103,11 @@ func main() {
 	var count int
 	fmt.Printf("input players count... -> ")
 	fmt.Scan(&count)
-	count = 3
-	// for _, d := range deck.Cards {
-	// 	for k, v := range d {
-	// 		fmt.Println(nominalMap[v], k)
-	// 	}
-	// }
-	// var players [][]Card
+	if (allCards-5)/count < 2.0 {
+		fmt.Println("cant create a table!")
+		return
+	}
+
 	players := make([][]Card, count)
 	cardMinus := 1
 	for i := 0; i < count; i++ {
@@ -122,7 +120,7 @@ func main() {
 	}
 	fmt.Println("first player cards")
 	for i, p := range players {
-		fmt.Printf("%d cards: ", i+1)
+		fmt.Printf("#%d player cards: ", i+1)
 		for _, c := range p {
 			fmt.Printf("%s %s ", c.NominalStr, c.Suit)
 		}
