@@ -32,7 +32,7 @@ func main() {
 	for i := 0; i < count; i++ {
 		fmt.Print(table1.Players[i].Name, " cards: ")
 		for _, c := range table1.Players[i].Hand {
-			fmt.Printf("%s %s ", c.NominalStr, c.Suit)
+			fmt.Printf("%s %s ", c.Rank, c.Suit)
 		}
 		fmt.Println()
 
@@ -40,7 +40,7 @@ func main() {
 	}
 
 	for i := 0; i < game.CountFlop; i++ {
-		fmt.Printf("%s %s ", table1.Street[i].NominalStr, table1.Street[i].Suit)
+		fmt.Printf("%s %s ", table1.Street[i].Rank, table1.Street[i].Suit)
 	}
 
 	fmt.Println()
