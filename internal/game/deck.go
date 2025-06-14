@@ -39,6 +39,7 @@ func NewDeck() *Deck {
 }
 
 // ShuffleDeck shuffles the deck of cards using the Fisher-Yates algorithm
+// Usage with any iters
 // #NOTE: In the future: should rework
 func (d *Deck) ShuffleDeck() {
 	s := rand.NewSource(time.Now().Unix())
@@ -49,9 +50,21 @@ func (d *Deck) ShuffleDeck() {
 	}
 }
 
+// Extract the card from top of the deck and return it
 func (d *Deck) GetCard() Card {
 	card := d.Cards[d.Length-1]
 	d.Cards = d.Cards[:d.Length-1]
 	d.Length--
 	return card
+}
+
+// Return to the init state of the deck
+func (d *Deck) ReturnCard(card []Card) {
+	d.Cards = append(d.Cards, card...)
+	d.Length++
+	if d.Length > CountCards {
+		clear(d.Cards)
+		d.Cards = NewDeck().Cards
+		d.Length = CountCards
+	}
 }

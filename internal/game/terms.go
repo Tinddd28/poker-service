@@ -116,9 +116,11 @@ var AllRanks = []Rank{RankTwo, RankThree, RankFour, RankFive, RankSix, RankSeven
 
 // Counts for various game elements
 const (
-	AllCards      = 52 // Total cards on a standard deck
-	CountCards    = 2  // Number of cards in a player`s hand
-	CountSuit     = 4  // Number of suits in a standard deck
-	CountFlop     = 3  // Number of flop cards on the table
-	CountNominals = 13 // Number of a nominal cards in a standard deck
+	AllCards          = 52 // Total cards on a standard deck
+	CountCards        = 2  // Number of cards in a player`s hand
+	CountSuit         = 4  // Number of suits in a standard deck
+	CountFlop         = 3  // Number of flop cards on the table
+	CountNominals     = 13 // Number of a nominal cards in a standard deck
+	CountCombinations = 21 // Number of combinations  C(7, 5) = 7! / (5! * (7 - 5)!) = 21
+	MaxCard           = 5
 )

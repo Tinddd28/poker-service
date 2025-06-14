@@ -7,8 +7,10 @@ type Table struct {
 	Street     []Card
 }
 type Player struct {
-	Hand [2]Card
-	Name string
+	Hand        [2]Card
+	Name        string
+	Combination []Card
+	Strength    HandStrength
 }
 
 func CreateTable() *Table {
@@ -33,9 +35,23 @@ func (t *Table) StartGame() {
 	}
 }
 
+// Add three cards to the street - The flop
 func (t *Table) Flop() {
 	for i := 0; i < CountFlop; i++ {
-		t.Street = append(t.Street, t.Deck.Cards[t.Deck.Length-1])
-		t.Deck.Length--
+		t.Street = append(t.Street, t.Deck.GetCard())
+	}
+}
+
+// Add fourth card to the street - The turn
+func (t *Table) Turn() {
+	if len(t.Street) == CountFlop {
+		t.Street = append(t.Street, t.Deck.GetCard())
+	}
+}
+
+// Add last card to the street - The river
+func (t *Table) River() {
+	if len(t.Street) == CountFlop+1 {
+		t.Street = append(t.Street, t.Deck.GetCard())
 	}
 }
